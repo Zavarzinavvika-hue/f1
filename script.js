@@ -27,13 +27,17 @@ function openScreen(currentId, nextId) {
     } else {
         document.body.className = 'bg-page-3';
     }
+
+    // Автоматически прокручиваем страницу наверх при смене экрана на телефоне
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 // ЭКРАН 1 -> ЭКРАН 2
 btnStart.addEventListener('click', () => openScreen('screen-1', 'screen-2'));
 
-// УБЕГАЮЩАЯ КНОПКА
-btnRunaway.addEventListener('mouseover', () => {
+// УБЕГАЮЩАЯ КНОПКА (ПК + Телефон)
+function moveRunawayButton(e) {
+    if (e) e.preventDefault();
     const container = document.querySelector('.game-container');
     
     const randomX = Math.floor(Math.random() * (container.clientWidth - btnRunaway.clientWidth - 40)) + 20;
@@ -42,9 +46,10 @@ btnRunaway.addEventListener('mouseover', () => {
     btnRunaway.style.position = 'absolute';
     btnRunaway.style.left = randomX + 'px';
     btnRunaway.style.top = randomY + 'px';
-});
+}
 
-// КЛИК НА УБЕГАЮЩУЮ КНОПКУ
+btnRunaway.addEventListener('mouseover', moveRunawayButton);
+btnRunaway.addEventListener('touchstart', moveRunawayButton);
 btnRunaway.addEventListener('click', (e) => {
     e.preventDefault();
     openScreen('screen-2', 'screen-meme');
@@ -56,15 +61,19 @@ btnMemeBack.addEventListener('click', () => openScreen('screen-meme', 'screen-2'
 // ЭКРАН 2 -> ЭКРАН 3
 btnNext2.addEventListener('click', () => openScreen('screen-2', 'screen-3'));
 
-// ВЫБОР ЕДЫ (Пирамидка)
+// НАДЕЖНЫЙ ВЫБОР ЕДЫ (Поддерживает и клики мышей, и тапы пальцем)
 foodCards.forEach(card => {
-    card.addEventListener('click', () => {
+    const handleFoodSelect = (e) => {
+        e.preventDefault();
         foodCards.forEach(c => c.classList.remove('selected'));
         card.classList.add('selected');
         
         selectedFood = card.getAttribute('data-food');
         btnNext3.disabled = false;
-    });
+    };
+
+    card.addEventListener('click', handleFoodSelect);
+    card.addEventListener('touchend', handleFoodSelect);
 });
 
 // ЭКРАН 3 -> ЭКРАН 4
