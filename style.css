@@ -287,3 +287,11 @@ input[type="date"], input[type="time"] {
         font-size: 14px !important;
     }
 }
+
+/* --- СТИЛЬ ВЫБРАННОЙ ЕДЫ --- */
+.food-card-item.selected {
+    border-color: #00f2fe !important;
+    background-color: #1a365d !important;
+    box-shadow: 0 0 20px rgba(0, 242, 254, 0.5) !important;
+    transform: scale(1.02);
+}
