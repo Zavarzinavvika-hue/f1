@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Гран-при: Идеальный выходной</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-page-1">
+
+    <div class="game-container">
+        
+        <!-- ОКНО 1: СТАРТ -->
+        <section class="screen active" id="screen-1">
+            <h1>🚦 Симулятор выходного дня</h1>
+            <p>Выбранный пилот: <b>Даня</b>.<br> Статус: Готов к заезду.</p>
+            <h2>Начать гонку?</h2>
+            <div class="buttons">
+                <button id="btn-start" class="btn-good">Погнали!</button>
+            </div>
+        </section>
+
+        <!-- ОКНО 2: ПРЕПЯТСТВИЕ -->
+        <section class="screen" id="screen-2">
+            <div class="f1-race-control">🚨 RACE CONTROL: WARNING</div>
+            <h1 style="color: #ffcc00;">⚠️ Желтые флаги!</h1>
+            <p>На трассе непредвиденное препятствие — <b>Дикая Лень</b>.<br>Снизьте скорость, обгоны запрещены!</p>
+            <h2>Ваши действия?</h2>
+            <div class="buttons" style="height: 60px; position: relative;">
+                <button id="btn-runaway" class="btn-bad">Сойти на диван</button>
+                <button id="btn-next-2" class="btn-good">Активировать DRS</button>
+            </div>
+        </section>
+
+        <!-- ОКНО СЕКРЕТНЫЙ МЕМ (С фото Тото Вольффа) -->
+        <section class="screen" id="screen-meme">
+            <h1 style="color: #ff4a4a;">❌ Сход с дистанции?</h1>
+            <div class="meme-box">
+                <img src="toto.jpg" alt="Тото Вольфф" class="toto-meme-img">
+                <h3>Тото Вольфф недоволен!</h3>
+                <p>Такой вариант строго не приветствуется тактикой нашей команды. Box, box! Возвращайся на трассу!</p>
+            </div>
+            <div class="buttons">
+                <button id="btn-meme-back" class="btn-good">Вернуться в заезд</button>
+            </div>
+        </section>
+
+        <!-- ОКНО 3: ПИТ-СТОП (Огромные окошки с йорками) -->
+        <section class="screen" id="screen-3">
+            <h1>🔧 Пит-стоп: Дозаправка</h1>
+            <p>Главный механик Джонник требует выбрать тип топлива:</p>
+            
+            <div class="food-grid-pyramid">
+                <div class="food-card-item" data-food="Пиццу 🍕">
+                    <img src="york1.jpg" alt="Йорк 1" class="pyramid-yorkie-img">
+                    <h3>Свиток сытости 🍕</h3>
+                    <p>Пицца</p>
+                </div>
+
+                <div class="food-card-item" data-food="Суши 🍣">
+                    <img src="york4.jpg" alt="Йорк 4" class="pyramid-yorkie-img">
+                    <h3>Зелье маны 🍣</h3>
+                    <p>Суши</p>
+                </div>
+
+                <div class="food-card-item food-card-bottom" data-food="Бургеры 🍔">
+                    <img src="york3.jpg" alt="Йорк 3" class="pyramid-yorkie-img">
+                    <h3>Зелье силы 🍔</h3>
+                    <p>Бургеры</p>
+                </div>
+            </div>
+
+            <div class="buttons">
+                <button id="btn-next-3" class="btn-good" disabled>Подтвердить выбор</button>
+            </div>
+        </section>
+
+        <!-- ОКНО 4: КВАЛИФИКАЦИЯ -->
+        <section class="screen" id="screen-4">
+            <h1>⏱️ Настройки квалификации</h1>
+            <p>Укажите точное время и дату старта заезда:</p>
+            
+            <div class="inputs-container">
+                <input type="date" id="date-picker">
+                <input type="time" id="time-picker">
+            </div>
+
+            <div class="buttons">
+                <button id="btn-next-4" class="btn-good">Завершить настройки</button>
+            </div>
+        </section>
+
+        <!-- ОКНО 5: ФИНАЛ -->
+        <section class="screen" id="screen-5">
+            <h1>🏁 Клетчатый флаг!</h1>
+            <div class="final-header">
+                <img src="york2.jpg" alt="Йорк 2" class="final-yorkie-img">
+                <h2>Гонка успешно началась!</h2>
+            </div>
+            <p class="final-info">
+                Патч применен. Шеф-механик Джонник выезжает на позицию.<br>
+                Жду тебя на стартовой решетке:<br>
+                📅 <span id="final-date">--.--.----</span> в ⏰ <span id="final-time">--:--</span><br>
+                Меню заезда: <b id="final-food">ничего не выбрано</b>.
+            </p>
+            <h3 style="color: #e94560; margin-top: 15px;">Не опаздывай на пит-лейн! 😘</h3>
+        </section>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
