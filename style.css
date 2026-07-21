@@ -1,6 +1,14 @@
-* {
+html, body {
     margin: 0;
     padding: 0;
+    width: 100%;
+    min-height: 100vh;
+    /* Убеждаемся, что скролл разрешен */
+    overflow-x: hidden;
+    overflow-y: auto !important; 
+}
+
+* {
     box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -9,10 +17,9 @@ body {
     color: #fff;
     display: flex;
     justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    overflow: hidden;
+    align-items: flex-start; /* Прижимаем контент к верху, чтобы был честный скролл */
     position: relative;
+    padding: 30px 0; /* Отступы сверху и снизу, чтобы карточка не прилипала к краям */
 }
 
 /* --- ФОНЫ --- */
